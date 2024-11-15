@@ -1,0 +1,69 @@
+<MainScreen>:
+    #: import time __main__.time
+
+    name: 'main'
+    FloatLayout:
+        size_hint: None, None
+
+    DPEAButton:
+        id: counter
+        text: "0"
+        size: 100, 100
+        x: root.width * 0.20
+        y: root.height * 0.5
+        color: 1,0,0,1
+        on_press: root.counter()
+
+    DPEAButton:
+        id: widget
+        text: "Motor Off"
+        size: 100, 100
+        x: root.width * 0.45
+        y: root.height * 0.5
+        color: 0,1,0,1
+        on_press: root.widget()
+
+    DPEAButton:
+        id: btn
+        text: "Off" if btn.state == "normal" else "On"
+        size: 100, 100
+        x: root.width * 0.70
+        y: root.height * 0.5
+        color: 0,0,1,1
+        on_press: root.pressed()
+
+    Slider:
+        id: slider
+        min: 0
+        max: 100
+        step: 1
+        x: root.width * 0
+        y: root.height * - 0.45
+        sensitivity: "handle"
+
+    Label:
+        text: str(slider.value)
+        x: root.width * 0.315
+        y: root.height * 0.33
+        color: 0,0,0
+
+    ImageButton:
+        id: mcspider
+        source: '/home/softdev/Pictures/mcspider.jpeg'
+        size: 100,100
+        x: root.width * 0.20
+        y: root.height * 0.25
+        on_press: root.secondscreen()
+
+    SelfUpdatingLabel:
+        id: time_label
+        size_hint: None, None
+        font_size: 30
+        update_property: time.now
+        update_property_parameters: None
+        center_x: root.width * 0.5
+        center_y: root.height * 0.45
+        color: 1, 1, 1, 1
+        bold: True
+        outline_width: self.font_size * 0.1
+        outline_color: 0, 0, 0
